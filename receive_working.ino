@@ -70,7 +70,7 @@ uint32_t id;
 uint8_t  type; // bit0: ext, bit1: rtr
 uint8_t  len;
 byte cdata[MAX_DATA_SIZE] = {8};
-int rpm,ect,lambda,mappress;
+int rpm,ect,lambda,mappress,battvoltage;
 
 void loop() {
     // check if data coming
@@ -95,21 +95,19 @@ void loop() {
 
       rpm = (cdata[0]*256 + cdata[1]);  //write the data from Byte 0 & 1 to variable "a"
       ect = (cdata[2]);  //write the data from Byte 2 & 3 to variable "b"
-      lambda = (cdata[3]);  //write the data from Byte 4 & 5 to variable "c"
-      mappress = (cdata[4]*256 + cdata[5]);  //write the data from Byte 6 & 7 to variable "d"
+      lambda = (cdata[3]*256 + cdata[4]);  //write the data from Byte 4 & 5 to variable "c"
+      mappress = (cdata[5]);  //write the data from Byte 6 & 7 to variable "d"
+      battvoltage = (cdata[6]*256 + cdata[7]);  //write the data from Byte 4 & 5 to variable "c"
       
-    
-    Serial.print("ECT: ");
-    Serial.print(ect);
-    Serial.print("    ");
-    Serial.print("Lambda: ");
-    Serial.print(lambda);
-    Serial.print("    ");
-    Serial.print("MAP: ");
-    Serial.print(mappress);
-    Serial.print("    ");
-    Serial.print("RPM: ");
     Serial.print(rpm);
+    Serial.print("\t");
+    Serial.print(ect);
+    Serial.print("\t");
+    Serial.print(lambda);
+    Serial.print("\t");
+    Serial.print(mappress);
+    Serial.print("\t");
+    Serial.print(battvoltage);
     Serial.println("");
     
 }
