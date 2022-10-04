@@ -1,9 +1,3 @@
-/*
- * demo: CAN-BUS Shield, receive all frames and print all fields id/type/data
- * to receive frame fastly, a poll in loop() is required.
- *
- * Copyright (C) 2020 Seeed Technology Co.,Ltd.
- */
 #include <SPI.h>
 
 #define CAN_2515
@@ -93,7 +87,7 @@ void loop() {
      * the data carried by remote frame
      */
 
-      rpm = (cdata[0]*256 + cdata[1]);  //write the data from Byte 0 & 1 to variable "a"
+      rpm = (cdata[0]*256 + cdata[1]);  //write the data from Byte 0 & 1 to variable "rpm"
       ect = (cdata[2]);  //write the data from Byte 2 & 3 to variable "b"
       lambda = (cdata[3]*256 + cdata[4]);  //write the data from Byte 4 & 5 to variable "c"
       mappress = (cdata[5]);  //write the data from Byte 6 & 7 to variable "d"
